@@ -49,7 +49,7 @@ then
     $SUDO su - root -c "apt update -y;apt upgrade -y;"
     echo -e "Should Docker be Installed?"
     echo -e "${lightgreen}1 = yes "
-    echo -e "2 = no${nc}
+    echo -e "2 = no${nc}"
     echo -e "Default = yes"
     read docker
 
@@ -70,11 +70,11 @@ then
     then
         echo -e "Should a custom Port be used for the Webinterface?"
         echo -e "${lightgreen}1 = yes "
-        echo -e "2 = no${nc}
+        echo -e "2 = no${nc}"
         echo -e "Default = yes"
         echo "Default = 9000"
         read custom
-        if (( $custom = 1 )); then
+        if (( custom = 1 )); then
             echo -e "What Port would you like to use for the Webinterface"
             read port
         fi
