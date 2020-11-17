@@ -11,7 +11,7 @@ if (( $EUID != 0 )); then
     SUDO='sudo'
 fi
 port=9000
-update=y
+update=1
 
 echo -e " ${lightblue} _____             _              ${nc}          ";
 echo -e " ${lightblue}|  __ \           | |             ${nc}  ___     ";
@@ -37,19 +37,23 @@ echo ""
 echo ""
 echo ""
 
-echo -e "Update and Upgrade Packages? ${lightgreen}[y/n]${nc}"
+echo -e "Update and Upgrade Packages? "
+echo -e "${lightgreen}1 = yes "
+echo -e "2 = no${nc}
 echo -e "Default = yes"
 read update
 
-if (( update = "y" )); 
+if (( update = 1 )); 
 then
 
     $SUDO su - root -c "apt update -y;apt upgrade -y;"
-    echo -e "Should Docker be Installed? ${lightgreen}[y/n]${nc}"
+    echo -e "Should Docker be Installed?"
+    echo -e "${lightgreen}1 = yes "
+    echo -e "2 = no${nc}
     echo -e "Default = yes"
     read docker
 
-    if (( docker = y ))
+    if (( docker = 1 ))
     then
         $SUDO su - root -c "curl -fsSL https://get.docker.com -o get-docker.sh"
         $SUDO su - root -c "sh get-docker.sh"
@@ -57,15 +61,20 @@ then
         $SUDO su - root -c "apt install docker-compose -y"
     fi
 
-    echo -e "Should Portainer be Installed? ${lightgreen}[y/n]${nc}"
+    echo -e "Should Portainer be Installed?"
+    echo -e "${lightgreen}1 = yes "
+    echo -e "2 = no${nc}
     echo -e "Default = yes"
     read portainer
-    if (( portainer = "y" ))
+    if (( portainer = 1 ))
     then
-        echo -e "Should a custom Port be used for the Webinterface? ${lightgreen}[y/n]${nc}"
+        echo -e "Should a custom Port be used for the Webinterface?"
+        echo -e "${lightgreen}1 = yes "
+        echo -e "2 = no${nc}
+        echo -e "Default = yes"
         echo "Default = 9000"
         read custom
-        if (( $custom = "y" )); then
+        if (( $custom = 1 )); then
             echo -e "What Port would you like to use for the Webinterface"
             read port
         fi
