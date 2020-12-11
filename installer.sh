@@ -63,7 +63,7 @@ then
 
     echo -e "Should Portainer be Installed?"
     echo -e "${lightgreen}1 = yes "
-    echo -e "2 = no${nc}
+    echo -e "2 = no${nc}"
     echo -e "Default = yes"
     read portainer
     if (( portainer = 1 ))
